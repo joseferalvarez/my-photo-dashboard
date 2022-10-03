@@ -16,25 +16,39 @@
             font-family: var(--font-title);
             color: var(--color-terciary);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
-        .burger {
+        .burger,
+        .cross {
             width: 25px;
             height: 25px;
             align-content: flex-end;
             margin-right: 30px;
             color: var(--color-terciary);
+            display: none;
+        }
+
+        .burger__open {
+            display: block;
+        }
+
+        .cross__open {
+            display: block;
         }
     }
 
     .nav {
         margin-top: 30px;
-        display: block;
+        display: none;
 
         .nav__li {
             list-style: none;
             margin: 7px 0;
+
+            .nav__icon {
+                color: var(--color-terciary);
+            }
 
             .nav__li__a {
                 font-family: var(--font-title);
@@ -44,6 +58,10 @@
                 font-size: 0.8rem;
             }
         }
+    }
+
+    .nav-visible {
+        display: block;
     }
 }
 
@@ -55,10 +73,11 @@
 
         .topbar__container {
             margin-left: 5%;
-        }
 
-        .burger {
-            display: none;
+            .burger,
+            .cross {
+                display: none;
+            }
         }
 
         .nav {

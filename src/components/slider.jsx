@@ -21,7 +21,7 @@ const Slider = () => {
     const buttons = document.getElementsByClassName("slider__button");
 
     const getRandomPhotos = () => {
-        let photosSlider = [];
+        const photosSlider = [];
 
         fetch(`${process.env.REACT_APP_API_RANDOM}?client_id=${process.env.REACT_APP_CLIENT_ID}&count=5`)
             .then(response => {

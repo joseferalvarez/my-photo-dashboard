@@ -2,11 +2,13 @@
 
 :root{
   --color-primary: #2B2D42;
+  --color-primary-shadow: #2B2D4229;
   --color-secondary: #8D99AE;
   --color-terciary: #EDF2F4;
   --color-quaternary: #EF233C;
   --color-quinary: #D90429;
   --color-black: #000000;
+  --color-black-shadow: #00000029;
   --color-white: #ffffff;
   --color-terciary-hover: #d0dde2;
 

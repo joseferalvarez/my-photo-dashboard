@@ -2,6 +2,7 @@
     display: inline-block;
     position: relative;
     width: 90%;
+    height: 400px;
     min-width: 250px;
 
     .card__img {
@@ -18,7 +19,7 @@
         bottom: 10px;
         padding: 3px 10px;
         background-color: #D90429cc;
-        border-radius: 20px;
+        border-radius: 5px;
 
         .likes__icon,
         .likes__num {
@@ -40,7 +41,7 @@
         font-family: var(--font-text);
         font-weight: 500;
         padding: 3px 10px;
-        border-radius: 20px;
+        border-radius: 5px;
     }
 
     .card__add {

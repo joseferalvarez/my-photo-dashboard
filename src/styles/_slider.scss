@@ -5,7 +5,6 @@
     width: 100%;
     background-color: black;
     margin: 10% 0;
-    border-radius: 8px;
     box-shadow: 0px 3px 6px var(--color-black-shadow);
 
     .slider__img {
@@ -13,7 +12,7 @@
         margin: auto;
         height: 100%;
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     .slider__img-active {

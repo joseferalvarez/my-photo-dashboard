@@ -1,0 +1,57 @@
+.card {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+
+    .card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        margin: auto;
+        border-radius: 5px;
+    }
+
+    .card__likes {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        position: absolute;
+        right: 5px;
+        bottom: 10px;
+        padding: 3px 10px;
+        background-color: #D90429cc;
+        border-radius: 20px;
+
+        .likes__icon,
+        .likes__num {
+            color: var(--color-terciary);
+        }
+
+        .likes__num {
+            font-family: var(--font-text);
+            font-weight: 500;
+            margin-left: 3px;
+        }
+    }
+
+    .card__size,
+    .card__date {
+        position: absolute;
+        background-color: #2B2D42cc;
+        color: var(--color-terciary);
+        font-family: var(--font-text);
+        font-weight: 500;
+        padding: 3px 10px;
+        border-radius: 20px;
+    }
+
+    .card__size {
+        left: 5px;
+        bottom: 10px;
+    }
+
+    .card__date {
+        top: 5px;
+        right: 5px;
+    }
+}

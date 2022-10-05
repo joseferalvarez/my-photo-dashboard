@@ -1,20 +1,18 @@
 .card {
     display: inline-block;
     position: relative;
-    width: 400px;
+    width: 90%;
+    min-width: 250px;
 
     .card__img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         margin: auto;
-        border-radius: 5px;
     }
 
     .card__likes {
         display: flex;
-        justify-content: center;
-        align-content: center;
         position: absolute;
         right: 5px;
         bottom: 10px;
@@ -45,13 +43,36 @@
         border-radius: 20px;
     }
 
+    .card__add {
+        position: absolute;
+        background-color: #2B2D42cc;
+        color: var(--color-terciary);
+        font-size: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
     .card__size {
         left: 5px;
         bottom: 10px;
     }
 
-    .card__date {
+    .card__date,
+    .card__add {
         top: 5px;
         right: 5px;
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    .card {
+        width: 49%;
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .card {
+        width: 24%;
     }
 }

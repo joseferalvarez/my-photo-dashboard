@@ -1,5 +1,6 @@
 import React from 'react';
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
+import { saveAs } from "file-saver";
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -42,6 +43,12 @@ const Photo = (props) => {
         return `${day}, ${time}`;
     }
 
+    const saveFile = () => {
+        saveAs(props.urlfull, `${props.id}.jpg`);
+    }
+
+
+
     if (!props.date) {
         return (
             <div className="card">
@@ -73,7 +80,7 @@ const Photo = (props) => {
                     <p className='card__description-saved'>{props.description}</p>
                 </div>
                 <div className='card__buttons'>
-                    <DownloadForOfflineIcon className='card__download' />
+                    <DownloadForOfflineIcon className='card__download' onClick={saveFile} />
                     <HighlightOffIcon className='card__delete' />
                 </div>
                 <ModeEditIcon className='card__edit' />

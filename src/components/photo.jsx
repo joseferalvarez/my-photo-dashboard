@@ -48,7 +48,15 @@ const Photo = (props) => {
     }
 
     const deletePhoto = () => {
+        const array = JSON.parse(localStorage.getItem("items-photos"));
 
+        array.forEach((obj, i) => {
+            if (obj.id === props.id) {
+                array.splice(i, i);
+            }
+        })
+
+        localStorage.setItem("items-photos", JSON.stringify(array));
     }
 
     if (!props.date) {
@@ -83,7 +91,7 @@ const Photo = (props) => {
                 </div>
                 <div className='card__buttons'>
                     <DownloadForOfflineIcon className='card__download' onClick={saveFile} />
-                    <HighlightOffIcon className='card__delete' />
+                    <HighlightOffIcon className='card__delete' onClick={deletePhoto} />
                 </div>
                 <ModeEditIcon className='card__edit' />
 

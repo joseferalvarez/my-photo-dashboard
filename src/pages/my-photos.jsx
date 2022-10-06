@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Photo from '../components/photo';
 import "../styles/_my-photos.scss"
 
 const MyPhotos = () => {
-    const array = JSON.parse(localStorage.getItem("items-photos"));
+    const [photos, setPhotos] = useState(localStorage.getItem("items-photos") ? JSON.parse(localStorage.getItem("items-photos")) : []);
 
     return (
         <div className='photos__container'>
-            {array.map((obj) => (
+            {photos.map((obj) => (
                 <Photo id={obj.id}
                     description={obj.description}
                     urlfull={obj.urlfull}

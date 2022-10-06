@@ -47,7 +47,9 @@ const Photo = (props) => {
         saveAs(props.urlfull, `${props.id}.jpg`);
     }
 
+    const deletePhoto = () => {
 
+    }
 
     if (!props.date) {
         return (

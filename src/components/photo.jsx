@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { saveAs } from "file-saver";
 
 import { IconButton, Modal, TextField } from '@mui/material';
+/* import { Snackbar } from '@mui/material'; */
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -92,14 +93,13 @@ const Photo = (props) => {
                     <p className='likes__num'>{props.likes}</p>
                 </div>
                 <p className='card__size'>{`${props.width} x ${props.height}`}</p>
-                <AddCircleOutlineIcon className='card__add' onClick={addPhotoStorage} />
+                <IconButton className='card__add' onClick={addPhotoStorage} ><AddCircleOutlineIcon className='card__add__icon' /></IconButton>
             </div>
         );
     } else {
         return (
             <div className="card-saved">
                 <img className='card__img-saved' src={props.urlregular} alt="" />
-
                 <div className='card__data-saved'>
                     <div className='card__info'>
                         <div className='card__info-saved'>
@@ -114,10 +114,11 @@ const Photo = (props) => {
                     <p className='card__description-saved'>{props.description}</p>
                 </div>
                 <div className='card__buttons'>
-                    <DownloadForOfflineIcon className='card__download' onClick={saveFile} />
-                    <HighlightOffIcon className='card__delete' onClick={deletePhoto} />
+                    <IconButton onClick={openModal}><ModeEditIcon className='card__icon' /></IconButton>
+                    <IconButton onClick={saveFile} ><DownloadForOfflineIcon className='card__icon' /> </IconButton>
+                    <IconButton onClick={deletePhoto} ><HighlightOffIcon className='card__icon' /></IconButton>
                 </div>
-                <ModeEditIcon className='card__edit' onClick={openModal} />
+
                 <Modal className="modal"
                     open={modal}
                     onClose={openModal}
@@ -126,11 +127,12 @@ const Photo = (props) => {
                     <div className='modal__container'>
                         <p className='modal__text'>Change the description of the photo:</p>
                         <TextField className='modal__input' value={input} onChange={e => setInput(e.target.value)} />
-                        <button className='modal__button' onClick={editDescription}>Save changes</button>
+                        <button className='button' onClick={editDescription}>Save changes</button>
                         <IconButton onClick={openModal} className='modal__close'><CloseIcon /></IconButton>
                     </div>
                 </Modal>
-            </div>
+
+            </div >
         );
     };
 }

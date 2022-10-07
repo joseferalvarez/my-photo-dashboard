@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import "./styles/_blocks.scss"
 import { Route, Routes } from 'react-router';
 
 import Topbar from './components/topbar';

@@ -2,14 +2,16 @@
     display: inline-block;
     position: relative;
     width: 90%;
-    height: 400px;
+    height: 500px;
     min-width: 250px;
+    border-radius: 7px;
 
     .card__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         margin: auto;
+        border-radius: 5px;
     }
 
     .card__likes {
@@ -46,11 +48,13 @@
 
     .card__add {
         position: absolute;
-        background-color: #2B2D42cc;
-        color: var(--color-terciary);
-        font-size: 35px;
         border-radius: 50%;
-        cursor: pointer;
+
+        .card__add__icon {
+            color: var(--color-terciary);
+            background-color: var(--color-primary);
+            border-radius: 50%;
+        }
     }
 
     .card__size {
@@ -70,7 +74,6 @@
         width: 49%;
     }
 }
-
 
 @media only screen and (min-width: 1000px) {
     .card {

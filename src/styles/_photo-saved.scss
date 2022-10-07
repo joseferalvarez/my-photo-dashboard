@@ -3,6 +3,7 @@
     position: relative;
     width: 90%;
     min-width: 250px;
+    height: 500px;
     border: 1px solid var(--color-terciary);
     border-radius: 5px;
 
@@ -11,11 +12,12 @@
         height: 60%;
         object-fit: cover;
         margin: auto;
+        border-radius: 5px 5px 0px 0px;
     }
 
     .card__data-saved {
         width: 100%;
-        height: 40%;
+        height: 31%;
 
         .card__info {
             display: flex;
@@ -73,32 +75,12 @@
     }
 
     .card__buttons {
-        position: absolute;
-        top: 5px;
-        right: 5px;
+        display: flex;
+        justify-content: flex-end;
 
-        .card__delete,
-        .card__download {
-            margin: 0 5px;
-            background-color: #2B2D42cc;
-            color: var(--color-terciary);
-            font-size: 35px;
-            border-radius: 5px;
-            cursor: pointer;
-
+        .card__icon {
+            color: var(--color-secondary);
         }
-    }
-
-    .card__edit {
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        font-size: 35px;
-        padding: 5px;
-        background-color: #2B2D42cc;
-        color: var(--color-terciary);
-        border-radius: 50%;
-        cursor: pointer;
     }
 }
 

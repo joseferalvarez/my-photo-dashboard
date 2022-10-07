@@ -6,6 +6,7 @@
     background-color: black;
     margin: 10% 0;
     box-shadow: 0px 3px 6px var(--color-black-shadow);
+    border-radius: 7px;
 
     .slider__img {
         display: none;
@@ -13,6 +14,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        border-radius: 5px;
     }
 
     .slider__img-active {
@@ -29,7 +31,11 @@
         border-radius: 50%;
 
         .arrow__icon {
-            margin: 7px;
+            margin: 8px;
+        }
+
+        .arrow__icon-left {
+            margin-left: 12px;
         }
     }
 

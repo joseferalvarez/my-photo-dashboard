@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { saveAs } from "file-saver";
+
+import { IconButton, Modal, TextField } from '@mui/material';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import CloseIcon from '@mui/icons-material/Close';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+
 import "../styles/_photo.scss"
 import "../styles/_photo-saved.scss"
 
 const Photo = (props) => {
+    const [input, setInput] = useState(props.description || "");
+    const [modal, setModal] = useState(false);
+
+
+    const openModal = () => {
+        setModal(!modal);
+    }
 
     const addPhotoStorage = () => {
 
@@ -59,6 +70,19 @@ const Photo = (props) => {
         localStorage.setItem("items-photos", JSON.stringify(array));
     }
 
+    const editDescription = () => {
+        const photolist = JSON.parse(localStorage.getItem("items-photos")).map((obj) => {
+            if (obj.id === props.id) {
+                obj.description = input;
+            }
+            return obj;
+        });
+
+        localStorage.setItem("items-photos", JSON.stringify(photolist));
+
+        openModal(!modal);
+    };
+
     if (!props.date) {
         return (
             <div className="card">
@@ -93,8 +117,19 @@ const Photo = (props) => {
                     <DownloadForOfflineIcon className='card__download' onClick={saveFile} />
                     <HighlightOffIcon className='card__delete' onClick={deletePhoto} />
                 </div>
-                <ModeEditIcon className='card__edit' />
-
+                <ModeEditIcon className='card__edit' onClick={openModal} />
+                <Modal className="modal"
+                    open={modal}
+                    onClose={openModal}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description">
+                    <div className='modal__container'>
+                        <p className='modal__text'>Change the description of the photo:</p>
+                        <TextField className='modal__input' value={input} onChange={e => setInput(e.target.value)} />
+                        <button className='modal__button' onClick={editDescription}>Save changes</button>
+                        <IconButton onClick={openModal} className='modal__close'><CloseIcon /></IconButton>
+                    </div>
+                </Modal>
             </div>
         );
     };

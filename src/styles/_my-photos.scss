@@ -1,7 +1,20 @@
-.photos__container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 3%;
-    gap: 3px;
+.my-photos {
+
+    .filters {
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
+
+        .select {
+            width: 150px;
+        }
+    }
+
+    .photos__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 3%;
+        gap: 3px;
+    }
 }

@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Photo from '../components/photo';
 import SearchIcon from '@mui/icons-material/Search';
 import "../styles/_search.scss";
 
+import { getRandomPhotos, sayHello } from '../features/search/searchSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Search = () => {
+
+    const dispatch = useDispatch();
+    const { images } = useSelector((state) => state.imagesStore);
 
     const [input, setInput] = useState("");
     const [photos, setPhotos] = useState([]);
 
     const doSearch = () => {
+        dispatch(sayHello());
+        dispatch(getRandomPhotos());
+        console.log(images)
+
         const photoList = [];
         if (input !== "") {
             fetch(`${process.env.REACT_APP_API_SEARCH}?client_id=${process.env.REACT_APP_CLIENT_ID}&query=${input}`)
@@ -59,12 +69,12 @@ const Search = () => {
                 <div className='button' onClick={doSearch}><SearchIcon />SEARCH</div>
             </div>
             <div className='photos__container'>
-                {photos.map((obj) => (
+                {images.map((obj) => (
                     <Photo id={obj.id}
                         description={obj.description}
-                        urlfull={obj.urlfull}
-                        urlregular={obj.urlregular}
-                        urlthumb={obj.urlthumb}
+                        urlfull={obj.urls.full}
+                        urlregular={obj.urls.regular}
+                        urlthumb={obj.urls.thumb}
                         likes={obj.likes}
                         width={obj.width}
                         height={obj.height} />

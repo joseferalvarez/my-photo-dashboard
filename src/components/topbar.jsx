@@ -15,9 +15,9 @@ const Topbar = () => {
             </div>
             <div className='nav'>
                 <ul className='nav__options'>
-                    <li className='nav__li'><NavLink to="/" className='nav__li__a'>Home</NavLink></li>
-                    <li className='nav__li'><NavLink to="/my-photos" className='nav__li__a'>My Photos</NavLink></li>
-                    <li className='nav__li'><NavLink to="/search" className='nav__li__a'>Search</NavLink></li>
+                    <li className='nav__li'><NavLink to="/my-photo-dashboard" className='nav__li__a'>Home</NavLink></li>
+                    <li className='nav__li'><NavLink to="/my-photo-dashboard/my-photos" className='nav__li__a'>My Photos</NavLink></li>
+                    <li className='nav__li'><NavLink to="/my-photo-dashboard/search" className='nav__li__a'>Search</NavLink></li>
                 </ul>
             </div>
         </nav>

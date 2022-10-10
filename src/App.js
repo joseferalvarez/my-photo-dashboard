@@ -15,13 +15,13 @@ function App() {
       <Topbar />
 
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/my-photos' element={<MyPhotos />} />
-        <Route path='/search' element={<Search />} />
+        <Route path='/my-photo-dashboard' exact element={<Home />} />
+        <Route path='/my-photo-dashboard/my-photos' element={<MyPhotos />} />
+        <Route path='/my-photo-dashboard/search' element={<Search />} />
       </Routes>
 
       <Footer />
-    </div >
+    </div>
   );
 }
 

@@ -7,9 +7,13 @@ import SouthIcon from '@mui/icons-material/South';
 import Photo from '../components/photo';
 import "../styles/_my-photos.scss"
 
+import { useDispatch, useSelector } from 'react-redux';
+import { orderBy } from '../features/favourites/favouritesSlice';
+
 const MyPhotos = () => {
 
-    const [photos, setPhotos] = useState(localStorage.getItem("items-photos") ? JSON.parse(localStorage.getItem("items-photos")) : []);
+    const dispatch = useDispatch();
+    const { favimages } = useSelector((state) => state.favourites);
     const [description, setDescription] = useState("");
     const [option, setOption] = useState("");
     const [order, setOrder] = useState(true);
@@ -19,51 +23,20 @@ const MyPhotos = () => {
     };
 
     useEffect(() => {
-        if (description === "") {
-            setPhotos(JSON.parse(localStorage.getItem("items-photos")));
-        } else {
-            const photolist = (JSON.parse(localStorage.getItem("items-photos"))).filter((obj) => {
-                if (typeof obj.description === "string" && obj.description.toLowerCase().includes(description)) {
-                    return obj;
-                }
-            });
-            setPhotos(photolist);
-            console.log(option);
-        }
-        setPhotos(orderPhotos(option));
-
-    }, [description, option, order]);
+        orderPhotos(option);
+    });
 
     const changeOrder = () => {
         setOrder(!order);
     }
 
     const orderPhotos = (type) => {
-        const array = photos.map((obj) => {
-            return obj
-        });
-
-        switch (type) {
-            case "Date":
-                return array.sort((a, b) => {
-                    return (order ? (new Date(a.date) - new Date(b.date)) : (new Date(b.date) - new Date(a.date)));
-                })
-            case "Width":
-                return array.sort((a, b) => {
-                    return (order ? (a.width - b.width) : (b.width - a.width));
-                })
-            case "Height":
-                return array.sort((a, b) => {
-                    return (order ? (a.height - b.height) : (b.height - a.height));
-                })
-            case "Likes":
-                return array.sort((a, b) => {
-                    return (order ? (a.likes - b.likes) : (b.likes - a.likes));
-                })
-            default: {
-                return array;
+        dispatch(orderBy(
+            {
+                type: type,
+                order: order
             }
-        }
+        ));
     }
 
     return (
@@ -82,7 +55,7 @@ const MyPhotos = () => {
                 {order ? <SouthIcon onClick={changeOrder} /> : <NorthIcon onClick={changeOrder} />}
             </div>
             <div className='photos__container'>
-                {photos.map((obj) => (
+                {favimages.map((obj) => (
                     <Photo id={obj.id}
                         description={obj.description}
                         urlfull={obj.urlfull}

@@ -15,7 +15,11 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import "../styles/_photo.scss"
 import "../styles/_photo-saved.scss"
 
+import { useDispatch } from 'react-redux';
+import { addLocalPhoto, deleteLocalPhoto, editLocalDescription } from '../features/favourites/favouritesSlice';
+
 const Photo = (props) => {
+    const dispatch = useDispatch();
     const [input, setInput] = useState(props.description || "");
     const [modal, setModal] = useState(false);
 
@@ -25,13 +29,7 @@ const Photo = (props) => {
     }
 
     const addPhotoStorage = () => {
-
-        if (!localStorage.getItem("items-photos")) {
-            localStorage.setItem("items-photos", "[]");
-        }
-
-        const array = JSON.parse(localStorage.getItem("items-photos"));
-        array[array.length] = {
+        dispatch(addLocalPhoto({
             id: props.id,
             description: props.description,
             urlfull: props.urlfull,
@@ -41,11 +39,11 @@ const Photo = (props) => {
             width: props.width,
             height: props.height,
             date: getActualDate()
-        };
+        }));
+    }
 
-        const array2 = array.map((e) => e);
-        localStorage.setItem("items-photos", JSON.stringify(array2));
-        console.log(array2);
+    const deletePhoto = () => {
+        dispatch(deleteLocalPhoto(props.id));
     }
 
     const getActualDate = () => {
@@ -59,27 +57,11 @@ const Photo = (props) => {
         saveAs(props.urlfull, `${props.id}.jpg`);
     }
 
-    const deletePhoto = () => {
-        const array = JSON.parse(localStorage.getItem("items-photos"));
-
-        array.forEach((obj, i) => {
-            if (obj.id === props.id) {
-                array.splice(i, i);
-            }
-        })
-
-        localStorage.setItem("items-photos", JSON.stringify(array));
-    }
-
     const editDescription = () => {
-        const photolist = JSON.parse(localStorage.getItem("items-photos")).map((obj) => {
-            if (obj.id === props.id) {
-                obj.description = input;
-            }
-            return obj;
-        });
-
-        localStorage.setItem("items-photos", JSON.stringify(photolist));
+        dispatch(editLocalDescription({
+            id: props.id,
+            description: input
+        }));
 
         openModal(!modal);
     };

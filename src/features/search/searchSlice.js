@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchPhotos } from "./photosAPI";
 
-export const getRandomPhotos = createAsyncThunk(
+export const getApiPhotos = createAsyncThunk(
     "search/fetchPhotos",
-    async () => {
-        return await fetchPhotos();
+    async (query) => {
+        return await fetchPhotos(query);
     }
 )
 
 const initialState = {
     images: [],
+    status: "",
 }
 
 export const searchSlice = createSlice({
@@ -22,15 +23,15 @@ export const searchSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getRandomPhotos.pending, (state) => {
-                console.log("pending");
+            .addCase(getApiPhotos.pending, (state) => {
+                state.status = "pending";
             })
-            .addCase(getRandomPhotos.fulfilled, (state, action) => {
-                console.log("fullfilled")
+            .addCase(getApiPhotos.fulfilled, (state, action) => {
+                state.status = "fulfilled";
                 state.images = action.payload;
             })
-            .addCase(getRandomPhotos.rejected, (state) => {
-                console.log("rejected");
+            .addCase(getApiPhotos.rejected, (state) => {
+                state.status = "rejected";
             });
     }
 });

@@ -14,6 +14,7 @@ const MyPhotos = () => {
 
     const dispatch = useDispatch();
     const { favimages } = useSelector((state) => state.favourites);
+    const [photos, setPhotos] = useState(favimages);
     const [description, setDescription] = useState("");
     const [option, setOption] = useState("");
     const [order, setOrder] = useState(true);
@@ -24,11 +25,25 @@ const MyPhotos = () => {
 
     useEffect(() => {
         orderPhotos(option);
+        searchByDescription();
     });
 
     const changeOrder = () => {
         setOrder(!order);
-    }
+    };
+
+    const searchByDescription = () => {
+        if (description && description !== "") {
+            const photolist = favimages.filter((obj) => {
+                if (obj.description && obj.description.includes(description)) {
+                    return obj;
+                }
+            });
+            setPhotos(photolist);
+        } else {
+            setPhotos(favimages);
+        }
+    };
 
     const orderPhotos = (type) => {
         dispatch(orderBy(
@@ -55,7 +70,7 @@ const MyPhotos = () => {
                 {order ? <SouthIcon onClick={changeOrder} /> : <NorthIcon onClick={changeOrder} />}
             </div>
             <div className='photos__container'>
-                {favimages.map((obj) => (
+                {photos.map((obj) => (
                     <Photo id={obj.id}
                         description={obj.description}
                         urlfull={obj.urlfull}

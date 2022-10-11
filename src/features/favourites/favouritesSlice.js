@@ -12,19 +12,24 @@ export const favouritesSlice = createSlice({
     name: "favourites",
     initialState,
     reducers: {
-        addLocalPhoto: (state, action) => {
+        /*Añade una foto que no haya sido añadida antes*/
+        addNewPhoto: (state, action) => {
             if ([...state.favimages].every(obj => obj.id !== action.payload.id)) {
                 state.favimages = [...state.favimages, action.payload];
                 setLocalStorage(state.favimages);
             }
         },
-        deleteLocalPhoto: (state, action) => {
+
+        /*Elimina una foto de la lista*/
+        deletePhoto: (state, action) => {
             state.favimages = state.favimages.filter(
                 (photo) => photo.id !== action.payload
             );
             setLocalStorage(state.favimages);
         },
-        editLocalDescription: (state, action) => {
+
+        /*Cambia la descripcion de una foto*/
+        editPhotoDescription: (state, action) => {
             state.favimages = state.favimages.map((obj) => {
                 if (obj.id === action.payload.id) {
                     obj.description = action.payload.description;
@@ -33,26 +38,31 @@ export const favouritesSlice = createSlice({
             });
             setLocalStorage(state.favimages)
         },
+
+        /*Ordena las fotos por fecha, anchura, altura o likes en orden ascendente o descendente*/
         orderBy: (state, action) => {
-            switch (action.payload.type) {
+            const type = action.payload.type;
+            const order = action.payload.order;
+
+            switch (type) {
                 case "Date":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (new Date(a.date) - new Date(b.date)) : (new Date(b.date) - new Date(a.date)));
+                        return (order ? (new Date(a.date) - new Date(b.date)) : (new Date(b.date) - new Date(a.date)));
                     })
                     break;
                 case "Width":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.width - b.width) : (b.width - a.width));
+                        return (order ? (a.width - b.width) : (b.width - a.width));
                     })
                     break;
                 case "Height":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.height - b.height) : (b.height - a.height));
+                        return (order ? (a.height - b.height) : (b.height - a.height));
                     })
                     break;
                 case "Likes":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.likes - b.likes) : (b.likes - a.likes));
+                        return (order ? (a.likes - b.likes) : (b.likes - a.likes));
                     })
                     break;
                 default:
@@ -64,9 +74,9 @@ export const favouritesSlice = createSlice({
     }
 })
 export const {
-    addLocalPhoto,
-    deleteLocalPhoto,
-    editLocalDescription,
+    addNewPhoto,
+    deletePhoto,
+    editPhotoDescription,
     orderBy,
     searchByDescription
 } = favouritesSlice.actions;

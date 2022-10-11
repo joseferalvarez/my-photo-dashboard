@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-
-import { TextField, IconButton, Tooltip } from '@mui/material';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import NorthIcon from '@mui/icons-material/North';
-import SouthIcon from '@mui/icons-material/South';
-import Photo from '../components/photo';
-import "../styles/_my-photos.scss"
-
 import { useDispatch, useSelector } from 'react-redux';
 import { orderBy } from '../features/favourites/favouritesSlice';
+import Photo from '../components/photo';
+
+import { TextField, IconButton, Tooltip, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import NorthIcon from '@mui/icons-material/North';
+import SouthIcon from '@mui/icons-material/South';
+import "../styles/_my-photos.scss"
 
 const MyPhotos = () => {
 
     const dispatch = useDispatch();
-    const { favimages } = useSelector((state) => state.favourites);
+    const { favimages } = useSelector((state) => state.favImages);
+
     const [photos, setPhotos] = useState(favimages);
     const [description, setDescription] = useState("");
     const [option, setOption] = useState("");
@@ -34,11 +33,7 @@ const MyPhotos = () => {
 
     const searchByDescription = () => {
         if (description && description !== "") {
-            const photolist = favimages.filter((obj) => {
-                if (obj.description && obj.description.includes(description)) {
-                    return obj;
-                }
-            });
+            const photolist = favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
             setPhotos(photolist);
         } else {
             setPhotos(favimages);

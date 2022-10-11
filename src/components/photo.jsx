@@ -15,7 +15,7 @@ import "../styles/_photo.scss"
 import "../styles/_photo-saved.scss"
 
 import { useDispatch } from 'react-redux';
-import { addLocalPhoto, deleteLocalPhoto, editLocalDescription } from '../features/favourites/favouritesSlice';
+import { addNewPhoto, deletePhoto, editPhotoDescription } from '../features/favourites/favouritesSlice';
 
 const Photo = (props) => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Photo = (props) => {
     }
 
     const addPhotoStorage = () => {
-        dispatch(addLocalPhoto({
+        dispatch(addNewPhoto({
             id: props.id,
             description: props.description,
             urlfull: props.urlfull,
@@ -42,8 +42,8 @@ const Photo = (props) => {
 
     }
 
-    const deletePhoto = () => {
-        dispatch(deleteLocalPhoto(props.id));
+    const deleteImage = () => {
+        dispatch(deletePhoto(props.id));
     }
 
     const getActualDate = () => {
@@ -58,7 +58,7 @@ const Photo = (props) => {
     }
 
     const editDescription = () => {
-        dispatch(editLocalDescription({
+        dispatch(editPhotoDescription({
             id: props.id,
             description: input
         }));
@@ -107,7 +107,7 @@ const Photo = (props) => {
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Delete" arrow>
-                        <IconButton onClick={deletePhoto} >
+                        <IconButton onClick={deleteImage} >
                             <HighlightOffIcon className='card__icon' />
                         </IconButton>
                     </Tooltip>

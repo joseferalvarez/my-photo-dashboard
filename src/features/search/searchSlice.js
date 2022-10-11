@@ -10,28 +10,17 @@ export const getApiPhotos = createAsyncThunk(
 
 const initialState = {
     images: [],
-    status: "",
 }
 
 export const searchSlice = createSlice({
     name: "photos",
     initialState,
-    reducers: {
-    },
     extraReducers: (builder) => {
         builder
-            .addCase(getApiPhotos.pending, (state) => {
-                state.status = "pending";
-            })
             .addCase(getApiPhotos.fulfilled, (state, action) => {
-                state.status = "fulfilled";
                 state.images = action.payload;
-            })
-            .addCase(getApiPhotos.rejected, (state) => {
-                state.status = "rejected";
             });
     }
 });
 
-export const { sayHello } = searchSlice.actions;
 export default searchSlice.reducer;

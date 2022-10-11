@@ -4,7 +4,7 @@ import favouritesReducer from "../features/favourites/favouritesSlice"
 
 export const store = configureStore({
   reducer: {
-    imagesStore: searchReducer,
-    favourites: favouritesReducer,
+    searchImages: searchReducer,
+    favImages: favouritesReducer,
   },
 });

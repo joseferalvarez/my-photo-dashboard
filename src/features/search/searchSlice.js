@@ -17,9 +17,6 @@ export const searchSlice = createSlice({
     name: "photos",
     initialState,
     reducers: {
-        sayHello: (state) => {
-            console.log("hello");
-        },
     },
     extraReducers: (builder) => {
         builder

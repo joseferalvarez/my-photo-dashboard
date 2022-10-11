@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { saveAs } from "file-saver";
 
-import { IconButton, Modal, TextField } from '@mui/material';
-/* import { Snackbar } from '@mui/material'; */
+import { IconButton, Modal, TextField, Tooltip } from '@mui/material';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -20,9 +19,9 @@ import { addLocalPhoto, deleteLocalPhoto, editLocalDescription } from '../featur
 
 const Photo = (props) => {
     const dispatch = useDispatch();
+
     const [input, setInput] = useState(props.description || "");
     const [modal, setModal] = useState(false);
-
 
     const openModal = () => {
         setModal(!modal);
@@ -40,6 +39,7 @@ const Photo = (props) => {
             height: props.height,
             date: getActualDate()
         }));
+
     }
 
     const deletePhoto = () => {
@@ -96,9 +96,21 @@ const Photo = (props) => {
                     <p className='card__description-saved'>{props.description}</p>
                 </div>
                 <div className='card__buttons'>
-                    <IconButton onClick={openModal}><ModeEditIcon className='card__icon' /></IconButton>
-                    <IconButton onClick={saveFile} ><DownloadForOfflineIcon className='card__icon' /> </IconButton>
-                    <IconButton onClick={deletePhoto} ><HighlightOffIcon className='card__icon' /></IconButton>
+                    <Tooltip title="Edit description" arrow>
+                        <IconButton onClick={openModal}>
+                            <ModeEditIcon className='card__icon' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Download" arrow>
+                        <IconButton onClick={saveFile} >
+                            <DownloadForOfflineIcon className='card__icon' />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Delete" arrow>
+                        <IconButton onClick={deletePhoto} >
+                            <HighlightOffIcon className='card__icon' />
+                        </IconButton>
+                    </Tooltip>
                 </div>
 
                 <Modal className="modal"
@@ -113,7 +125,6 @@ const Photo = (props) => {
                         <IconButton onClick={openModal} className='modal__close'><CloseIcon /></IconButton>
                     </div>
                 </Modal>
-
             </div >
         );
     };

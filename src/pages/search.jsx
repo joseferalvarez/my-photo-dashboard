@@ -26,7 +26,7 @@ const Search = () => {
             </div>
             <div className='photos__container'>
                 {images.map((obj) => (
-                    <Photo id={obj.id}
+                    <Photo key={obj.id} id={obj.id}
                         description={obj.description}
                         urlfull={obj.urls.full}
                         urlregular={obj.urls.regular}

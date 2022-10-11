@@ -13,8 +13,10 @@ export const favouritesSlice = createSlice({
     initialState,
     reducers: {
         addLocalPhoto: (state, action) => {
-            state.favimages = [...state.favimages, action.payload];
-            setLocalStorage(state.favimages);
+            if ([...state.favimages].every(obj => obj.id !== action.payload.id)) {
+                state.favimages = [...state.favimages, action.payload];
+                setLocalStorage(state.favimages);
+            }
         },
         deleteLocalPhoto: (state, action) => {
             state.favimages = state.favimages.filter(

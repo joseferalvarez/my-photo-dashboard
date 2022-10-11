@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import TextField from '@mui/material/TextField';
+import { TextField, IconButton, Tooltip } from '@mui/material';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import NorthIcon from '@mui/icons-material/North';
 import SouthIcon from '@mui/icons-material/South';
@@ -67,11 +67,21 @@ const MyPhotos = () => {
                         <MenuItem value={"Likes"}>Likes</MenuItem>
                     </Select>
                 </FormControl>
-                {order ? <SouthIcon onClick={changeOrder} /> : <NorthIcon onClick={changeOrder} />}
+                {order ?
+                    <Tooltip title="Ascending" arrow>
+                        <IconButton onClick={changeOrder}>
+                            <NorthIcon />
+                        </IconButton>
+                    </Tooltip> :
+                    <Tooltip title="Descending" arrow>
+                        <IconButton onClick={changeOrder}>
+                            <SouthIcon />
+                        </IconButton>
+                    </Tooltip>}
             </div>
             <div className='photos__container'>
                 {photos.map((obj) => (
-                    <Photo id={obj.id}
+                    <Photo key={obj.id} id={obj.id}
                         description={obj.description}
                         urlfull={obj.urlfull}
                         urlregular={obj.urlregular}

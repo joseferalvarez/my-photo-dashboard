@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    favimages: JSON.parse(localStorage.getItem("items")) || [],
+    favimages: JSON.parse(localStorage.getItem("items-photos")),
 }
 
 const setLocalStorage = (photos) => {
-    localStorage.setItem("items", JSON.stringify(photos));
+    localStorage.setItem("items-photos", JSON.stringify(photos));
 }
 
 export const favouritesSlice = createSlice({
@@ -32,25 +32,25 @@ export const favouritesSlice = createSlice({
             setLocalStorage(state.favimages)
         },
         orderBy: (state, action) => {
-            switch (action.payload.type) {
+            switch (action.type) {
                 case "Date":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (new Date(a.date) - new Date(b.date)) : (new Date(b.date) - new Date(a.date)));
+                        return (action.order ? (new Date(a.date) - new Date(b.date)) : (new Date(b.date) - new Date(a.date)));
                     })
                     break;
                 case "Width":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.width - b.width) : (b.width - a.width));
+                        return (action.order ? (a.width - b.width) : (b.width - a.width));
                     })
                     break;
                 case "Height":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.height - b.height) : (b.height - a.height));
+                        return (action.order ? (a.height - b.height) : (b.height - a.height));
                     })
                     break;
                 case "Likes":
                     state.favimages = state.favimages.sort((a, b) => {
-                        return (action.payload.order ? (a.likes - b.likes) : (b.likes - a.likes));
+                        return (action.order ? (a.likes - b.likes) : (a.likes - b.likes));
                     })
                     break;
                 default:

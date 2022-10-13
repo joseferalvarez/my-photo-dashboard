@@ -38,6 +38,7 @@ export const favouritesSlice = createSlice({
             });
             setLocalStorage(state.favimages)
         },
+
         /*Filtra los resultados por la descripcion*/
         searchByDescription: (state, action) => {
             const description = action.payload;
@@ -46,6 +47,7 @@ export const favouritesSlice = createSlice({
                 state.favimages = state.favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
             }
         },
+
         /*Ordena las fotos por fecha, anchura, altura o likes en orden ascendente o descendente*/
         orderBy: (state, action) => {
             const type = action.payload.type;
@@ -78,6 +80,7 @@ export const favouritesSlice = createSlice({
         },
     }
 })
+
 export const {
     addNewPhoto,
     deletePhoto,
@@ -85,4 +88,5 @@ export const {
     searchByDescription,
     orderBy,
 } = favouritesSlice.actions;
+
 export default favouritesSlice.reducer;

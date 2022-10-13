@@ -15,10 +15,10 @@ function App() {
       <Topbar />
       <main>
         <Routes>
-          <Route path='/myphotodashboard' exact element={<Home />} />
-          <Route path='/myphotodashboard/myphotos' element={<MyPhotos />} />
-          <Route path='/myphotodashboard/search' element={<Search />} />
-          <Route path='/myphotodashboard/*' element={<Home />} />
+          <Route path='/my-photo-dashboard/' exact element={<Home />} />
+          <Route path='/my-photo-dashboard/myphotos' element={<MyPhotos />} />
+          <Route path='/my-photo-dashboard/search' element={<Search />} />
+          <Route path='/my-photo-dashboard/*' element={<Home />} />
         </Routes>
       </main>
       <Footer />

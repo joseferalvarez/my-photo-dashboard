@@ -6,6 +6,7 @@ import Photo from '../components/photo';
 import { TextField, IconButton, Tooltip, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import NorthIcon from '@mui/icons-material/North';
 import SouthIcon from '@mui/icons-material/South';
+
 import "../styles/_my-photos.scss"
 
 const MyPhotos = () => {

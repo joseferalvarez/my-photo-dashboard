@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getApiPhotos } from '../features/search/searchSlice';
 import Photo from '../components/photo';
 
-import SearchIcon from '@mui/icons-material/Search';
 import { CircularProgress, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 import "../styles/_search.scss";
 

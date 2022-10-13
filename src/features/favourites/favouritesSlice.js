@@ -12,6 +12,7 @@ export const favouritesSlice = createSlice({
     name: "favourites",
     initialState,
     reducers: {
+
         /*Añade una foto que no haya sido añadida antes*/
         addNewPhoto: (state, action) => {
             if ([...state.favimages].every(obj => obj.id !== action.payload.id)) {
@@ -43,6 +44,7 @@ export const favouritesSlice = createSlice({
         searchByDescription: (state, action) => {
             const description = action.payload;
             state.favimages = JSON.parse(localStorage.getItem("items")) || [];
+
             if (description && description !== "") {
                 state.favimages = state.favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
             }

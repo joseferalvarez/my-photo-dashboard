@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { saveAs } from "file-saver";
+import { useDispatch } from 'react-redux';
+import { addNewPhoto, deletePhoto, editPhotoDescription } from '../features/favourites/favouritesSlice';
 
 import { IconButton, Modal, TextField, Tooltip } from '@mui/material';
-
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -14,8 +15,6 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import "../styles/_photo.scss"
 import "../styles/_photo-saved.scss"
 
-import { useDispatch } from 'react-redux';
-import { addNewPhoto, deletePhoto, editPhotoDescription } from '../features/favourites/favouritesSlice';
 
 const Photo = (props) => {
     const dispatch = useDispatch();

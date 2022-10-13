@@ -1,8 +1,8 @@
 import React from 'react';
-
-import Slider from '../components/slider';
-import "../styles/_home.scss"
 import { Link } from 'react-router-dom';
+import Slider from '../components/slider';
+
+import "../styles/_home.scss"
 
 const Home = () => {
 

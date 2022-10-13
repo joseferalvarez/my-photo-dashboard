@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import "../styles/_slider.scss"
@@ -9,7 +8,7 @@ const Slider = () => {
 
     const [index, setIndex] = useState(0);
 
-    const [photos, setPhotos] = useState({
+    const [photos] = useState({
         photo1: "https://images.unsplash.com/photo-1664825557836-2e1f6e72ce99?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
         photo2: "https://images.unsplash.com/photo-1664737426331-a1cde6c831d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=745&q=80",
         photo3: "https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1337&q=80",
@@ -19,26 +18,6 @@ const Slider = () => {
 
     const slides = document.getElementsByClassName("slider__img");
     const buttons = document.getElementsByClassName("slider__button");
-
-    const getRandomPhotos = () => {
-        const photosSlider = [];
-
-        fetch(`${process.env.REACT_APP_API_RANDOM}?client_id=${process.env.REACT_APP_CLIENT_ID}&count=5`)
-            .then(response => {
-                return response.json();
-            }).then(data => {
-                for (let i = 0; i < data.length; i++) {
-                    photosSlider.push(data[i].urls.regular);
-                }
-                setPhotos({
-                    photo1: photosSlider[0],
-                    photo2: photosSlider[1],
-                    photo3: photosSlider[2],
-                    photo4: photosSlider[3],
-                    photo5: photosSlider[4]
-                });
-            });
-    }
 
     const nextSlide = () => {
         setIndex(index + 1);
@@ -83,7 +62,6 @@ const Slider = () => {
                     <button className="slider__button" onClick={() => setIndex(4)}></button>
                 </div>
             </div>
-            <button onClick={getRandomPhotos}>random</button>
         </div>
     );
 }

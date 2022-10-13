@@ -3,19 +3,58 @@
 
     .filters {
         display: flex;
-        margin-top: 20px;
+        margin: 20px;
         justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .input {
+            width: 70%;
+        }
 
         .select {
-            width: 150px;
+            width: 20%;
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
         }
     }
 
     .photos__container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin: 3%;
-        gap: 3px;
+        display: block;
+        margin: 0 5%;
+
+        .photos {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 3%;
+            gap: 3px;
+        }
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    .my-photos {
+        .photos__container {
+            .photos {
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .my-photos {
+        .photos__container {
+
+            .photos {
+                justify-content: flex-start;
+            }
+        }
     }
 }

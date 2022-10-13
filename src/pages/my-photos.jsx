@@ -31,7 +31,7 @@ const MyPhotos = () => {
         setOrder(!order);
     };
 
-    const searchByDescription = () => {
+    const searchByDescription = (description) => {
         if (description && description !== "") {
             const photolist = favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
             setPhotos(photolist);
@@ -53,9 +53,9 @@ const MyPhotos = () => {
         <div className='my-photos'>
             <div className='filters'>
                 <TextField className='input' id="photos" label="Description" value={description} onChange={e => setDescription(e.target.value)} />
-                <FormControl>
+                <FormControl className='select'>
                     <InputLabel>Order by</InputLabel>
-                    <Select className='select' label="Order by" value={option} onChange={changeOption}>
+                    <Select label="Order by" value={option} onChange={changeOption}>
                         <MenuItem value={"Date"}>Date</MenuItem>
                         <MenuItem value={"Width"}>Width</MenuItem>
                         <MenuItem value={"Height"}>Height</MenuItem>
@@ -63,30 +63,32 @@ const MyPhotos = () => {
                     </Select>
                 </FormControl>
                 {order ?
-                    <Tooltip title="Ascending" arrow>
+                    <Tooltip className='arrow' title="Ascending" arrow>
                         <IconButton onClick={changeOrder}>
                             <NorthIcon />
                         </IconButton>
                     </Tooltip> :
-                    <Tooltip title="Descending" arrow>
+                    <Tooltip className='arrow' title="Descending" arrow>
                         <IconButton onClick={changeOrder}>
                             <SouthIcon />
                         </IconButton>
                     </Tooltip>}
             </div>
             <div className='photos__container'>
-                {photos.map((obj) => (
-                    <Photo key={obj.id} id={obj.id}
-                        description={obj.description}
-                        urlfull={obj.urlfull}
-                        urlregular={obj.urlregular}
-                        urlthumb={obj.urlthumb}
-                        likes={obj.likes}
-                        width={obj.width}
-                        height={obj.height}
-                        date={obj.date}
-                    />
-                ))}
+                <div className='photos'>
+                    {photos.map((obj) => (
+                        <Photo key={obj.id} id={obj.id}
+                            description={obj.description}
+                            urlfull={obj.urlfull}
+                            urlregular={obj.urlregular}
+                            urlthumb={obj.urlthumb}
+                            likes={obj.likes}
+                            width={obj.width}
+                            height={obj.height}
+                            date={obj.date}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

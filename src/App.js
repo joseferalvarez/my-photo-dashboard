@@ -13,13 +13,14 @@ function App() {
   return (
     <div className="App">
       <Topbar />
-
-      <Routes>
-        <Route path='/my-photo-dashboard/' exact element={<Home />} />
-        <Route path='/my-photo-dashboard/myphotos' element={<MyPhotos />} />
-        <Route path='/my-photo-dashboard/search' element={<Search />} />
-      </Routes>
-
+      <main>
+        <Routes>
+          <Route path='/myphotodashboard' exact element={<Home />} />
+          <Route path='/myphotodashboard/myphotos' element={<MyPhotos />} />
+          <Route path='/myphotodashboard/search' element={<Search />} />
+          {/* <Route path='*' element={<Home />} /> */}
+        </Routes>
+      </main>
       <Footer />
     </div>
   );

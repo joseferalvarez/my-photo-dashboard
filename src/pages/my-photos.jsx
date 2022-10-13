@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderBy } from '../features/favourites/favouritesSlice';
+import { orderBy, searchByDescription } from '../features/favourites/favouritesSlice';
 import Photo from '../components/photo';
 
 import { TextField, IconButton, Tooltip, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
@@ -13,7 +13,6 @@ const MyPhotos = () => {
     const dispatch = useDispatch();
     const { favimages } = useSelector((state) => state.favImages);
 
-    const [photos, setPhotos] = useState(favimages);
     const [description, setDescription] = useState("");
     const [option, setOption] = useState("");
     const [order, setOrder] = useState(true);
@@ -23,31 +22,18 @@ const MyPhotos = () => {
     };
 
     useEffect(() => {
-        orderPhotos(option);
-        searchByDescription();
-    });
+        dispatch(searchByDescription(description));
+        dispatch(orderBy(
+            {
+                type: option,
+                order: order
+            }
+        ));
+    }, [option, order, description, dispatch]);
 
     const changeOrder = () => {
         setOrder(!order);
     };
-
-    const searchByDescription = () => {
-        if (description && description !== "") {
-            const photolist = favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
-            setPhotos(photolist);
-        } else {
-            setPhotos(favimages);
-        }
-    };
-
-    const orderPhotos = (type) => {
-        dispatch(orderBy(
-            {
-                type: type,
-                order: order
-            }
-        ));
-    }
 
     return (
         <div className='my-photos'>
@@ -76,8 +62,9 @@ const MyPhotos = () => {
             </div>
             <div className='photos__container'>
                 <div className='photos'>
-                    {photos.map((obj) => (
-                        <Photo key={obj.id} id={obj.id}
+                    {favimages.map((obj) => (
+                        <Photo key={obj.id}
+                            id={obj.id}
                             description={obj.description}
                             urlfull={obj.urlfull}
                             urlregular={obj.urlregular}

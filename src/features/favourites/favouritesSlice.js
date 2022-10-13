@@ -38,7 +38,14 @@ export const favouritesSlice = createSlice({
             });
             setLocalStorage(state.favimages)
         },
-
+        /*Filtra los resultados por la descripcion*/
+        searchByDescription: (state, action) => {
+            const description = action.payload;
+            state.favimages = JSON.parse(localStorage.getItem("items")) || [];
+            if (description && description !== "") {
+                state.favimages = state.favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
+            }
+        },
         /*Ordena las fotos por fecha, anchura, altura o likes en orden ascendente o descendente*/
         orderBy: (state, action) => {
             const type = action.payload.type;
@@ -68,8 +75,6 @@ export const favouritesSlice = createSlice({
                 default:
                     break;
             }
-
-            setLocalStorage(state.favimages);
         },
     }
 })
@@ -77,7 +82,7 @@ export const {
     addNewPhoto,
     deletePhoto,
     editPhotoDescription,
+    searchByDescription,
     orderBy,
-    searchByDescription
 } = favouritesSlice.actions;
 export default favouritesSlice.reducer;

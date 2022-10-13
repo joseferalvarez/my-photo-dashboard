@@ -31,7 +31,7 @@ const MyPhotos = () => {
         setOrder(!order);
     };
 
-    const searchByDescription = (description) => {
+    const searchByDescription = () => {
         if (description && description !== "") {
             const photolist = favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
             setPhotos(photolist);

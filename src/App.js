@@ -15,9 +15,9 @@ function App() {
       <Topbar />
       <main>
         <Routes>
-          <Route path='/my-photo-dashboard/' exact element={<Home />} />
-          <Route path='/my-photo-dashboard/my-photos' element={<MyPhotos />} />
-          <Route path='/my-photo-dashboard/search' element={<Search />} />
+          <Route path='/my-photo-dashboard/#/' exact element={<Home />} />
+          <Route path='/my-photo-dashboard/#/my-photos' element={<MyPhotos />} />
+          <Route path='/my-photo-dashboard/#/search' element={<Search />} />
           <Route path='/my-photo-dashboard/*' element={<Home />} />
         </Routes>
       </main>

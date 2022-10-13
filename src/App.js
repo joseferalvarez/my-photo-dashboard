@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import "./styles/_blocks.scss"
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 
 import Topbar from './components/topbar';
 import Home from './pages/home.jsx';
@@ -11,16 +11,16 @@ import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="App">
+    <HashRouter>
       <Topbar />
       <Routes>
-        <Route path='/my-photo-dashboard/' element={<Home />} />
-        <Route path='/my-photo-dashboard/my-photos' element={<MyPhotos />} />
-        <Route path='/my-photo-dashboard/search' element={<Search />} />
-        <Route path='/my-photo-dashboard/*' element={<Home />} />
+        <Route path='/' exact element={<Home />} />
+        <Route path='/my-photos' element={<MyPhotos />} />
+        <Route path='/search' element={<Search />} />
+        <Route path='*' element={<Home />} />
       </Routes>
       <Footer />
-    </div>
+    </HashRouter>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import "./styles/_blocks.scss"
-import { Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 
 import Topbar from './components/topbar';
 import Home from './pages/home.jsx';
@@ -13,14 +13,12 @@ function App() {
   return (
     <div className="App">
       <Topbar />
-      <main>
-        <Routes>
-          <Route path='/my-photo-dashboard/' exact element={<Home />} />
-          <Route path='/my-photo-dashboard/my-photos' element={<MyPhotos />} />
-          <Route path='/my-photo-dashboard/search' element={<Search />} />
-          <Route path='/my-photo-dashboard/*' element={<Home />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path='/my-photo-dashboard/' element={<Home />} />
+        <Route path='/my-photo-dashboard/my-photos' element={<MyPhotos />} />
+        <Route path='/my-photo-dashboard/search' element={<Search />} />
+        <Route path='/my-photo-dashboard/*' element={<Home />} />
+      </Routes>
       <Footer />
     </div>
   );

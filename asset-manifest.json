@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/my-photo-dashboard/static/css/main.0ede5430.css",
-    "main.js": "/my-photo-dashboard/static/js/main.d7d16e82.js",
-    "static/js/787.e9a5c73b.chunk.js": "/my-photo-dashboard/static/js/787.e9a5c73b.chunk.js",
+    "main.css": "/my-photo-dashboard/static/css/main.16dada5f.css",
+    "main.js": "/my-photo-dashboard/static/js/main.261d7f4f.js",
+    "static/media/notfound.png": "/my-photo-dashboard/static/media/notfound.a639ace73b6667a9e375.png",
     "index.html": "/my-photo-dashboard/index.html",
-    "main.0ede5430.css.map": "/my-photo-dashboard/static/css/main.0ede5430.css.map",
-    "main.d7d16e82.js.map": "/my-photo-dashboard/static/js/main.d7d16e82.js.map",
-    "787.e9a5c73b.chunk.js.map": "/my-photo-dashboard/static/js/787.e9a5c73b.chunk.js.map"
+    "main.16dada5f.css.map": "/my-photo-dashboard/static/css/main.16dada5f.css.map",
+    "main.261d7f4f.js.map": "/my-photo-dashboard/static/js/main.261d7f4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ede5430.css",
-    "static/js/main.d7d16e82.js"
+    "static/css/main.16dada5f.css",
+    "static/js/main.261d7f4f.js"
   ]
 }

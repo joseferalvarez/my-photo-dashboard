@@ -18,7 +18,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/my-photos' element={<MyPhotos />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/notfound' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </HashRouter>

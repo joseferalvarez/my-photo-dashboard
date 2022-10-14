@@ -3,7 +3,7 @@ import React from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-import "../styles/_footer.scss"
+import '../styles/_footer.scss';
 
 const Footer = () => {
     return (

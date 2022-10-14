@@ -6,7 +6,7 @@ import Photo from '../components/photo';
 import { CircularProgress, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-import "../styles/_search.scss";
+import '../styles/_search.scss';
 
 const Search = () => {
 

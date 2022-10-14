@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { saveAs } from "file-saver";
+import { saveAs } from 'file-saver';
 import { useDispatch } from 'react-redux';
 import { addNewPhoto, deletePhoto, editPhotoDescription } from '../features/favourites/favouritesSlice';
 
@@ -12,8 +12,8 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import CloseIcon from '@mui/icons-material/Close';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
-import "../styles/_photo.scss"
-import "../styles/_photo-saved.scss"
+import '../styles/_photo.scss';
+import '../styles/_photo-saved.scss';
 
 
 const Photo = (props) => {

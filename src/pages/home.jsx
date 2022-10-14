@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from '../components/slider';
 
-import "../styles/_home.scss"
+import '../styles/_home.scss';
 
 const Home = () => {
 

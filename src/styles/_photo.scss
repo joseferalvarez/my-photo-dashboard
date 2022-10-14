@@ -14,7 +14,7 @@
         border-radius: 5px;
     }
 
-    .card__likes {
+    .img__likes {
         display: flex;
         position: absolute;
         right: 5px;
@@ -35,7 +35,7 @@
         }
     }
 
-    .card__size,
+    .img__size,
     .card__date {
         position: absolute;
         background-color: #2B2D42cc;
@@ -46,24 +46,24 @@
         border-radius: 5px;
     }
 
-    .card__add {
+    .img__add {
         position: absolute;
         border-radius: 50%;
 
-        .card__add__icon {
+        .img__add__icon {
             color: var(--color-terciary);
             background-color: var(--color-primary);
             border-radius: 50%;
         }
     }
 
-    .card__size {
+    .img__size {
         left: 5px;
         bottom: 10px;
     }
 
     .card__date,
-    .card__add {
+    .img__add {
         top: 5px;
         right: 5px;
     }

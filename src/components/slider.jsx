@@ -43,7 +43,7 @@ const Slider = () => {
 
         slides[index].style.display = "block";
         buttons[index].classList.add("slider__button-active");
-    });
+    }, [index, slides, buttons]);
 
     return (
         <div id="slider" className="slider">
@@ -52,8 +52,12 @@ const Slider = () => {
             <img className="slider__img" src={photos.photo3} alt="" />
             <img className="slider__img" src={photos.photo4} alt="" />
             <img className="slider__img" src={photos.photo5} alt="" />
-            <div className="arrow arrow-right" onClick={nextSlide}><ArrowForwardIosIcon className='arrow__icon' /></div>
-            <div className="arrow arrow-left" onClick={backSlide}><ArrowBackIosIcon className='arrow__icon arrow__icon-left' /></div>
+            <div className="arrow arrow-right" onClick={nextSlide}>
+                <ArrowForwardIosIcon className='arrow__icon' />
+            </div>
+            <div className="arrow arrow-left" onClick={backSlide}>
+                <ArrowBackIosIcon className='arrow__icon arrow__icon-left' />
+            </div>
 
             <div className="slider__button__container">
                 <div className="slider__button__list">

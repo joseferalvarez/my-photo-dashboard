@@ -19,6 +19,9 @@ export const searchSlice = createSlice({
         builder
             .addCase(getApiPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;
+            })
+            .addCase(getApiPhotos.rejected, () => {
+                console.error("No se han podido encontrar imagenes.");
             });
     }
 });

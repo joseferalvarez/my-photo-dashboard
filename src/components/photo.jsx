@@ -19,7 +19,7 @@ import "../styles/_photo-saved.scss"
 const Photo = (props) => {
     const dispatch = useDispatch();
 
-    const [input, setInput] = useState(props.description || "");
+    const [description, setDescription] = useState(props.description || "");
     const [modal, setModal] = useState(false);
 
     const openModal = () => {
@@ -59,7 +59,7 @@ const Photo = (props) => {
     const editDescription = () => {
         dispatch(editPhotoDescription({
             id: props.id,
-            description: input
+            description: description
         }));
 
         openModal(!modal);
@@ -69,12 +69,14 @@ const Photo = (props) => {
         return (
             <div className="card">
                 <img className='card__img' src={props.urlregular} alt="" />
-                <div className='card__likes'>
+                <div className='img__likes'>
                     <FavoriteBorderIcon className='likes__icon' />
                     <p className='likes__num'>{props.likes}</p>
                 </div>
-                <p className='card__size'>{`${props.width} x ${props.height}`}</p>
-                <IconButton className='card__add' onClick={addPhotoStorage} ><AddCircleOutlineIcon className='card__add__icon' /></IconButton>
+                <p className='img__size'>{`${props.width} x ${props.height}`}</p>
+                <IconButton className='img__add' onClick={addPhotoStorage} >
+                    <AddCircleOutlineIcon className='img__add__icon' />
+                </IconButton>
             </div>
         );
     } else {
@@ -119,12 +121,12 @@ const Photo = (props) => {
                     aria-describedby="modal-modal-description">
                     <div className='modal__container'>
                         <p className='modal__text'>Change the description of the photo:</p>
-                        <TextField className='modal__input' value={input} onChange={e => setInput(e.target.value)} />
+                        <TextField className='modal__input' value={description} onChange={e => setDescription(e.target.value)} />
                         <button className='button' onClick={editDescription}>Save changes</button>
                         <IconButton onClick={openModal} className='modal__close'><CloseIcon /></IconButton>
                     </div>
                 </Modal>
-            </div >
+            </div>
         );
     };
 }

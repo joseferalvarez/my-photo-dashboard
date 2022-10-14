@@ -1,6 +1,8 @@
 <h1>My photo dashboard</h1>
 <p>SPA web page that allows you to save images from the Unsplash API to localstorage and download them.</P>
 
+<hr>
+
 <a href="https://reactjs.org/">
     <img src="https://img.shields.io/badge/-REACT-000?style=for-the-badge&logo=react&logoColor=">
 </a>
@@ -26,4 +28,3 @@
 <a href="https://getbem.com/">
     <img src="https://img.shields.io/badge/-BEM-000?style=for-the-badge&logo=bem&logoColor=">
 </a>
-<hr>

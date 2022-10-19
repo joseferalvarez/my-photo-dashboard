@@ -46,7 +46,7 @@ export const favouritesSlice = createSlice({
             state.favimages = JSON.parse(localStorage.getItem("items")) || [];
 
             if (description && description !== "") {
-                state.favimages = state.favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description));
+                state.favimages = state.favimages.filter((obj) => obj.description && obj.description.toLowerCase().includes(description.toLowerCase()));
             }
         },
 
